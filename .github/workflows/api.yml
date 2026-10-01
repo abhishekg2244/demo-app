@@ -13,3 +13,6 @@ jobs:
     with:
       app_name: demo-app
       run_lint: true
+    
+    secrets:
+      DEMO_SECRET: ${{ secrets.DEMO_SECRET }}
