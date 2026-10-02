@@ -4,11 +4,28 @@ on:
 
   push:
     branches:
-      - main
+      # - main
+    paths:
+      - "src/**"
+      - ".github/workflows/workflow-api.yml"
+    branches-ignore:
+      - release-please--branches--main**
+
+    tags:
+      - 202**
+      - v[0-9]+.[0-9]+.[0-9]+
 
   pull_request:
-    branches:
-      - main
+    types: [opened,synchronize]      ## jaise hi PR open hoga to workflow chalega and Validate karega 
+    paths:                           ## is path me koi v chnage hoga tb v chalega
+      - "src/**"
+      - ".github/workflows/workflow-api.yml"
+
+  
+      
+    
+    # branches:
+    #   - main
 
   workflow_dispatch:
 
