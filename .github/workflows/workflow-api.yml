@@ -1,0 +1,35 @@
+name: Workflow API
+
+on:
+
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+
+jobs:
+
+  call-reusable-workflow:
+
+    uses: abhishekg2244/reusable-workflows/.github/workflows/ci.yml@main
+
+    with:
+      app_name: demo-app
+      run_lint: true
+
+    secrets:
+      DEMO_SECRET: ${{ secrets.DEMO_SECRET }}
+
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
